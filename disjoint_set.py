@@ -1,3 +1,7 @@
+# DisjointSet structure that internally manages the members of the set.
+# The internal data structure is not exposed to the user; instead
+# the values of the set members are used directly in all operations.
+# This uses rank to implement the path compression.
 class DisjointSet:
 
     class DisjointSetMember:
@@ -33,7 +37,7 @@ class DisjointSet:
 
     def union(self, x, y):
         if x not in self._members or y not in self._members:
-            raise KeyError("Values not members of the set!")
+            raise KeyError("Values are not members of the set!")
 
         x_root = self._members.get(self.find(x))
         y_root = self._members.get(self.find(y))
@@ -51,3 +55,6 @@ class DisjointSet:
             x_root.rank += 1
 
         return x_root.value
+
+    def contains_member(self, value) -> bool:
+        return value in self._members
