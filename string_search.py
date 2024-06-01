@@ -10,7 +10,6 @@ def string_search(text: str, s: str) -> list[int]:
             backtrack = p[backtrack]
         if text[i] == s[backtrack + 1]:
             backtrack += 1
-        print(backtrack)
         if backtrack == len(s) - 1:
             res.append(i - backtrack)
             backtrack = p[backtrack]
