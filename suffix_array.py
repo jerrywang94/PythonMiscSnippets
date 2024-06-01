@@ -19,7 +19,6 @@ def suffix_array(s: Sequence) -> list[int]:
             sl_array[i] = True
         elif s[i] < s[i+1]:
             sl_array[i] = False
-
         else:
             sl_array[i] = sl_array[i+1]
 
