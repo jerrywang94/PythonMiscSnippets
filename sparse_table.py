@@ -2,8 +2,7 @@ from typing import Callable
 
 """
 Sparse Table - builds a sparse table based on the given values and desired function (taking two params).
-Function obviously needs to be associative and can be specified to be idempotent or not, i.e. whether
-applying the same operation to the same value multiple times affects the result. For example,
+Function needs to be associative and can be specified to be idempotent or not. For example,
 Addition is not idempotent while RMQ (min) is.
 """
 
