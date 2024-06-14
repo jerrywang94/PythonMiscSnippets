@@ -2,7 +2,7 @@ import disjoint_set
 import heapq
 
 
-# Minimum spanning tree
+# Minimum spanning tree algorithms
 
 
 # Kruskal
@@ -25,19 +25,15 @@ def kruskal_mst(adj_list: list[list[tuple[int, float]]]) -> list[(int, int)]:
     return mst
 
 
-# Prim's
+# Prim
 def prim_mst(adj_list: list[list[tuple[int, float]]]) -> list[(int, int)]:
     n = len(adj_list)
     key_parent = [(0.0, 0, 0)]  # key, parent index, current index
-    cost = [float("inf")] * n
     mst = []
     seen = [False] * n
     seen[0] = True
-    cost[0] = 0.0
 
     while len(mst) < n-1:
-        print("--")
-        print(key_parent)
         curr = heapq.heappop(key_parent)
         if curr[1] != curr[2]:
             if not seen[curr[2]]:
@@ -47,7 +43,7 @@ def prim_mst(adj_list: list[list[tuple[int, float]]]) -> list[(int, int)]:
         seen[curr[2]] = True
 
         for item in adj_list[curr[2]]:
-            if not seen[item[0]] and item[1] < cost[item[0]]:
+            if not seen[item[0]]:
                 heapq.heappush(key_parent, (item[1], curr[2], item[0]))
 
     return mst

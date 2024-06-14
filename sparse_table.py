@@ -1,9 +1,9 @@
 from typing import Callable
 
 """
-Sparse Table - builds a sparse table based on the given values and desired function (taking two params).
-Function needs to be associative and can be specified to be idempotent or not. For example,
-Addition is not idempotent while RMQ (min) is.
+Sparse Table - builds a sparse table based on the given values and desired function (a callable that takes 2 params).
+Function needs to be associative and can be specified to be idempotent or not. For example, RMQ (min) is idempotent
+whereas Addition is not. Behaviour is the same either way, but the former is more efficient in time complexity.
 """
 
 
@@ -32,7 +32,7 @@ class SparseTable:
             return self._st[0][l]
 
         query_size = (r - l + 1).bit_length()
-        power = 1 << (query_size - 1)  # Using mult pow function is likely faster here, but avoids extra func/import
+        power = 1 << (query_size - 1)  # Using pow function is likely faster here, but this avoids extra func/import
 
         if self._idempotent:
             return self._func(self._st[query_size - 1][l], self._st[query_size - 1][r - power + 1])

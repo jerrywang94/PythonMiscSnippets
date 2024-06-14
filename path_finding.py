@@ -17,7 +17,9 @@ def dijkstra_shortest_path(adj_list: list[list[tuple[int, float]]], start: int, 
         curr_index = curr[1]
         prev_node = curr[2]
 
-        # Not using a structure like fib heap that allows easy modification of existing item pri; account for duplicates
+        # Since this isn't using a structure like fib heaps that allows for easy modification of an existing item's
+        # priority, it can't update items that are already on the heap and must instead add them again to the heap.
+        # Therefore, this needs to account for duplicate entries for the same node.
         if seen[curr_index][0]:
             continue
 

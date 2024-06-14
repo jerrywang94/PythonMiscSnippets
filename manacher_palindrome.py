@@ -1,4 +1,4 @@
-# Returns the start, end indices of the longest palindrome in the string.
+# find_longest_palindrome: Returns the start, end indices of the longest palindrome in the string.
 # Returns (0, 0) if string is empty or there are no palindromes found.
 def find_longest_palindrome(s: str) -> tuple[int, int]:
     if len(s) < 2:
@@ -16,7 +16,7 @@ def find_longest_palindrome(s: str) -> tuple[int, int]:
 
 # Runs Manacher's algorithm to output a result array where each entry is the radius of the longest
 # possible palindrome centered at that position inclusive of the center character. This results
-# array is a modified array representing the original string padded with special characters in
+# array is a modified array representing the original string padded with implicit special characters in
 # between each character of the original string to accommodate for even-length palindromes.
 def _manacher(s: str) -> list[int]:
     total_len = (2 * len(s) - 1)
@@ -41,13 +41,13 @@ def _manacher(s: str) -> list[int]:
             if i + mirrored_radius < curr_radius:
                 res[cursor + i] = mirrored_radius
             elif i + mirrored_radius == curr_radius:
-                cursor = cursor + i
+                cursor += i
                 curr_radius = mirrored_radius
                 break
             else:
                 res[cursor + i] = curr_radius - i
         else:
-            cursor = cursor + curr_radius
+            cursor += curr_radius
             curr_radius = 1
 
     return res

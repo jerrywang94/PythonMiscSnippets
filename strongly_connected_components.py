@@ -13,23 +13,23 @@ def kosaraju_scc(adj_list: list[list[int]]) -> list[int]:
         if visited[u]:
             return
         visited[u] = True
-        for n in adj_list[u]:
-            transpose[n].append(u)
-            traverse(n)
+        for node in adj_list[u]:
+            transpose[node].append(u)
+            traverse(node)
         inorder.append(u)
 
     def assign_root(u: int, root: int):
         if assignments[u] != -1:
             return
         assignments[u] = root
-        for n in transpose[u]:
-            assign_root(n, root)
+        for node in transpose[u]:
+            assign_root(node, root)
 
     for i in range(n):
         traverse(i)
 
-    for node in inorder[::-1]:
-        assign_root(node, node)
+    for n_node in inorder[::-1]:
+        assign_root(n_node, n_node)
 
     return assignments
 

@@ -8,6 +8,7 @@ def graham_scan(points: list[tuple[float, float]]) -> list[tuple]:
     if len(points) < 4:
         return points
 
+    # Sort by y-coord
     p = [(x[1], x[0], i) for i, x in enumerate(points)]
     starting_point_index = min(p)[2]
     starting_point = points[starting_point_index]
@@ -28,6 +29,7 @@ def graham_scan(points: list[tuple[float, float]]) -> list[tuple]:
     return hull
 
 
+# Jarvis march
 def jarvis_march(points: list[tuple[float, float]]) -> list[tuple]:
     if len(points) < 4:
         return points

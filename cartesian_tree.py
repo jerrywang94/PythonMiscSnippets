@@ -1,6 +1,9 @@
-# Cartesian tree - values can be anything so long as they are comparable to each other.
-# Values are extended into a tuple of (value, position in the original array) to accommodate duplicate values.
 from typing import Optional
+
+"""
+Cartesian tree - values can be anything so long as they are comparable to each other.
+Values are extended into a tuple of (value, position in the original array) to accommodate duplicate values.
+"""
 
 
 class TreeNode:

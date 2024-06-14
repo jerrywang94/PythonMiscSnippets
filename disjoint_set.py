@@ -1,9 +1,12 @@
-# DisjointSet structure that internally manages the members of the set.
-# The internal data structure is not exposed to the user; instead
-# the values of the set members are used directly in all operations.
-# This uses rank to implement the path compression.
-class DisjointSet:
+"""
+DisjointSet - structure that internally manages the members of the set. The internal data structure is not exposed
+to the user; instead the values of the set members are used directly in all operations.
 
+This uses rank to implement the path compression.
+"""
+
+
+class DisjointSet:
     class DisjointSetMember:
         def __init__(self, value):
             self.value = value
@@ -27,6 +30,7 @@ class DisjointSet:
         while root.parent != root:
             root = root.parent
 
+        # To avoid recursion call stack, traverse the tree a second time to do the path compression
         current_node = self._members.get(value)
         while current_node != root:
             parent = current_node.parent

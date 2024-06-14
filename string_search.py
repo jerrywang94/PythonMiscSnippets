@@ -1,4 +1,4 @@
-# KMP string search
+# Knuth-Morris-Pratt string search
 def string_search(text: str, s: str) -> list[int]:
     res = []
     backtrack = -1
